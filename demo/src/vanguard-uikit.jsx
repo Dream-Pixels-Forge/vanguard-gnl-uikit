@@ -99,14 +99,11 @@ const theme = {
   },
   colors: {
     primary: "bg-blue-600",
-    accent: "text-blue-400",
-    success: "text-emerald-400",
-    danger: "text-rose-400",
-    warning: "text-amber-400"
+    accent: "text-blue-400"
   },
   // Liquid gradient animations
-  liquidGradient: "bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20",
-  holographic: "bg-gradient-to-br from-blue-400/10 via-purple-400/10 to-pink-400/10",
+  liquidGradient: "bg-gradient-to-r from-blue-500/20 via-blue-400/10 to-white/10",
+  holographic: "bg-gradient-to-br from-blue-400/10 via-white/5 to-white/[0.02]",
 };
 
 // ==================== BUTTONS ====================
@@ -127,9 +124,7 @@ export const VanguardButton = ({
     // Multi-layer glass with liquid refraction
     glass: "bg-gradient-to-br from-white/10 via-white/5 to-white/[0.02] backdrop-blur-xl border border-white/15 shadow-[0_8px_32px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.1)] hover:bg-gradient-to-br hover:from-white/15 hover:via-white/8 hover:to-white/[0.03] hover:shadow-[0_12px_40px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.15)]",
     // Subtle ghost with liquid highlight
-    ghost: "bg-transparent text-white/60 hover:text-white hover:bg-gradient-to-br hover:from-white/5 hover:to-transparent hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]",
-    // Danger with liquid glow
-    danger: "bg-gradient-to-br from-rose-600 to-rose-700 text-white shadow-[0_8px_24px_rgba(244,63,94,0.4),inset_0_1px_1px_rgba(255,255,255,0.2)] hover:shadow-[0_12px_32px_rgba(244,63,94,0.5)] hover:translate-y-[-2px]"
+    ghost: "bg-transparent text-white/60 hover:text-white hover:bg-gradient-to-br hover:from-white/5 hover:to-transparent hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]"
   };
 
   const sizes = {
@@ -205,7 +200,7 @@ export const VanguardCard = ({
       style={{ animationDelay: `${delay}ms`, ...props.style }}
     >
       {/* Liquid gradient border animation */}
-      <div className="absolute inset-0 z-0 bg-gradient-to-r from-blue-500/30 via-purple-500/30 to-pink-500/30 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 animate-[spin_8s_linear_infinite_reverse]" style={{ margin: '-100%' }} />
+      <div className="absolute inset-0 z-0 bg-gradient-to-r from-blue-500/30 to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 animate-[spin_8s_linear_infinite_reverse]" style={{ margin: '-100%' }} />
       
       {/* Holographic shine */}
       <div className="absolute inset-0 z-0 bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
@@ -220,7 +215,7 @@ export const VanguardCard = ({
                 </div>
               )}
               {tag && (
-                <span className="text-[9px] font-black uppercase tracking-widest px-3 py-1 rounded-full bg-gradient-to-br from-blue-500/20 to-purple-500/20 text-blue-300 border border-blue-400/30 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)] backdrop-blur-md">
+                <span className="text-[9px] font-black uppercase tracking-widest px-3 py-1 rounded-full bg-gradient-to-br from-blue-500/20 to-blue-500/10 text-blue-300 border border-blue-400/30 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)] backdrop-blur-md">
                   {tag}
                 </span>
               )}
@@ -252,7 +247,7 @@ export const StatCard = ({
       <div className={`p-3 ${theme.holographic} text-blue-400 rounded-xl group-hover:scale-110 group-hover:bg-blue-500 group-hover:text-white ${theme.animation.liquid} shadow-[0_4px_12px_rgba(59,130,246,0.2),inset_0_1px_0_rgba(255,255,255,0.1)]`}>
         {Icon && <Icon size={20} />}
       </div>
-      <div className={`flex items-center gap-1 text-[10px] font-black uppercase tracking-widest px-2 py-1 rounded-full ${trend === 'up' ? 'bg-gradient-to-br from-emerald-500/20 to-emerald-500/10 text-emerald-300 border border-emerald-400/30 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]' : 'bg-gradient-to-br from-rose-500/20 to-rose-500/10 text-rose-300 border border-rose-400/30 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]'}`}>
+      <div className={`flex items-center gap-1 text-[10px] font-black uppercase tracking-widest px-2 py-1 rounded-full ${trend === 'up' ? 'bg-gradient-to-br from-blue-500/20 to-blue-500/10 text-blue-300 border border-blue-400/30 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]' : 'bg-gradient-to-br from-white/10 to-white/5 text-white/70 border border-white/20 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]'}`}>
         {trend === 'up' ? <ArrowUpRight size={10} /> : <ArrowDownRight size={10} />}
         {change}
       </div>
@@ -266,11 +261,7 @@ export const StatCard = ({
 
 export const StatusBadge = ({ children, variant = "blue" }) => {
   const variantColors = {
-    blue: { bg: 'from-blue-500/20 to-blue-500/10', text: 'text-blue-300', border: 'border-blue-400/30', glow: 'rgba(59,130,246,0.5)', color: '#3b82f6' },
-    emerald: { bg: 'from-emerald-500/20 to-emerald-500/10', text: 'text-emerald-300', border: 'border-emerald-400/30', glow: 'rgba(16,185,129,0.5)', color: '#10b981' },
-    rose: { bg: 'from-rose-500/20 to-rose-500/10', text: 'text-rose-300', border: 'border-rose-400/30', glow: 'rgba(244,63,94,0.5)', color: '#f43f5e' },
-    amber: { bg: 'from-amber-500/20 to-amber-500/10', text: 'text-amber-300', border: 'border-amber-400/30', glow: 'rgba(245,158,11,0.5)', color: '#f59e0b' },
-    purple: { bg: 'from-purple-500/20 to-purple-500/10', text: 'text-purple-300', border: 'border-purple-400/30', glow: 'rgba(168,85,247,0.5)', color: '#a855f7' }
+    blue: { bg: 'from-blue-500/20 to-blue-500/10', text: 'text-blue-300', border: 'border-blue-400/30', glow: 'rgba(59,130,246,0.5)', color: '#3b82f6' }
   };
 
   const colors = variantColors[variant];
@@ -289,11 +280,7 @@ export const StatusBadge = ({ children, variant = "blue" }) => {
 export const Badge = ({ children, variant = "default", size = "md", className = "" }) => {
   const variants = {
     default: "bg-white/5 text-white/60 border-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]",
-    blue: "bg-gradient-to-br from-blue-500/20 to-blue-500/10 text-blue-300 border-blue-400/30 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]",
-    emerald: "bg-gradient-to-br from-emerald-500/20 to-emerald-500/10 text-emerald-300 border-emerald-400/30 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]",
-    rose: "bg-gradient-to-br from-rose-500/20 to-rose-500/10 text-rose-300 border-rose-400/30 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]",
-    amber: "bg-gradient-to-br from-amber-500/20 to-amber-500/10 text-amber-300 border-amber-400/30 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]",
-    purple: "bg-gradient-to-br from-purple-500/20 to-purple-500/10 text-purple-300 border-purple-400/30 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]"
+    blue: "bg-gradient-to-br from-blue-500/20 to-blue-500/10 text-blue-300 border-blue-400/30 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]"
   };
 
   const sizes = {
@@ -467,10 +454,10 @@ export const ProjectRow = ({ name, status, progress, category, className = "" })
     <div className="flex items-center gap-8">
       <div className="hidden md:block">
         <div className="w-32 h-1 bg-white/5 rounded-full overflow-hidden">
-          <div className="h-full bg-gradient-to-r from-blue-500 to-purple-500 rounded-full group-hover:shadow-[0_0_12px_rgba(59,130,246,0.5)] transition-all duration-700" style={{ width: `${progress}%` }} />
+          <div className="h-full bg-gradient-to-r from-blue-500 to-blue-400 rounded-full group-hover:shadow-[0_0_12px_rgba(59,130,246,0.5)] transition-all duration-700" style={{ width: `${progress}%` }} />
         </div>
       </div>
-      <span className={`text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full border ${status === 'Active' || status === 'active' ? 'border-emerald-400/30 text-emerald-300 bg-gradient-to-br from-emerald-500/20 to-emerald-500/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]' : 'border-white/10 text-white/40'}`}>
+      <span className={`text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full border ${status === 'Active' || status === 'active' ? 'border-blue-400/30 text-blue-300 bg-gradient-to-br from-blue-500/20 to-blue-500/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)]' : 'border-white/10 text-white/40'}`}>
         {status}
       </span>
       <button className="p-2 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -486,8 +473,8 @@ export const AlertItem = ({ title, time, color = "blue", className = "" }) => (
       <div
         className="w-1.5 h-1.5 rounded-full"
         style={{
-          backgroundColor: color === 'rose' ? '#f43f5e' : color === 'emerald' ? '#10b981' : '#3b82f6',
-          boxShadow: `0 0 10px ${color === 'rose' ? 'rgba(244,63,94,0.5)' : color === 'emerald' ? 'rgba(16,185,129,0.5)' : 'rgba(59,130,246,0.5)'}`
+          backgroundColor: '#3b82f6',
+          boxShadow: '0 0 10px rgba(59,130,246,0.5)'
         }}
       />
       <p className="text-xs font-bold tracking-tight">{title}</p>
@@ -521,7 +508,7 @@ export const Avatar = ({ src, alt = "Avatar", size = "md", className = "" }) => 
   };
 
   return (
-    <div className={`${theme.radius.base} bg-gradient-to-tr from-blue-500 via-purple-500 to-pink-500 p-[2px] cursor-pointer hover:rotate-6 ${theme.animation.liquid} shadow-[0_4px_16px_rgba(59,130,246,0.3)] ${sizes[size]} ${className}`}>
+    <div className={`${theme.radius.base} bg-gradient-to-tr from-blue-500 to-blue-400 p-[2px] cursor-pointer hover:rotate-6 ${theme.animation.liquid} shadow-[0_4px_16px_rgba(59,130,246,0.3)] ${sizes[size]} ${className}`}>
       <div className={`w-full h-full ${theme.radius.base} bg-black flex items-center justify-center overflow-hidden`}>
         <img src={src} alt={alt} className="w-full h-full object-cover" />
       </div>
@@ -532,7 +519,7 @@ export const Avatar = ({ src, alt = "Avatar", size = "md", className = "" }) => 
 export const UpgradeCard = ({ version = "v5.4", title, buttonText = "Upgrade", className = "" }) => (
   <div className={`mt-auto p-6 ${theme.radius.xlarge} ${theme.holographic} border border-white/10 relative overflow-hidden group ${className}`}>
     {/* Liquid wave animation */}
-    <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-purple-500/10 to-pink-500/10 animate-pulse" />
+    <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 via-white/5 to-blue-400/10 animate-pulse" />
     <div className="absolute -right-4 -bottom-4 opacity-10 group-hover:scale-110 group-hover:rotate-12 transition-transform duration-700">
       <Cpu size={100} />
     </div>
@@ -555,7 +542,7 @@ export const BarChart = ({
     {data.map((h, i) => (
       <div key={i} className="flex-1 group/bar relative h-full flex items-end">
         <div
-          className="w-full bg-gradient-to-t from-blue-600/20 via-blue-500/40 to-purple-500/60 group-hover/bar:to-blue-400 transition-all duration-500 rounded-t-lg shadow-[0_0_20px_rgba(59,130,246,0.2)]"
+          className="w-full bg-gradient-to-t from-blue-600/20 via-blue-500/40 to-blue-400/60 group-hover/bar:to-blue-400 transition-all duration-500 rounded-t-lg shadow-[0_0_20px_rgba(59,130,246,0.2)]"
           style={{ height: `${h}%` }}
         />
         <div
@@ -572,10 +559,10 @@ export const BarChart = ({
 export const BackgroundDecor = ({ className = "" }) => (
   <div className={`fixed inset-0 pointer-events-none z-0 ${className}`}>
     {/* Liquid gradient orbs */}
-    <div className="absolute top-[-15%] right-[-10%] w-[60%] h-[60%] bg-gradient-to-br from-blue-600/15 via-purple-600/10 to-pink-600/10 blur-[140px] rounded-full animate-pulse" />
-    <div className="absolute bottom-[-15%] left-[-10%] w-[60%] h-[60%] bg-gradient-to-tr from-purple-600/15 via-pink-600/10 to-blue-600/10 blur-[140px] rounded-full opacity-50" />
+    <div className="absolute top-[-15%] right-[-10%] w-[60%] h-[60%] bg-gradient-to-br from-blue-600/15 via-blue-500/10 to-white/5 blur-[140px] rounded-full animate-pulse" />
+    <div className="absolute bottom-[-15%] left-[-10%] w-[60%] h-[60%] bg-gradient-to-tr from-blue-600/10 via-white/5 to-blue-600/10 blur-[140px] rounded-full opacity-50" />
     {/* Holographic overlay */}
-    <div className="absolute top-[20%] left-[30%] w-[40%] h-[40%] bg-gradient-to-br from-cyan-500/5 via-blue-500/5 to-purple-500/5 blur-[100px] rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
+    <div className="absolute top-[20%] left-[30%] w-[40%] h-[40%] bg-gradient-to-br from-blue-500/5 via-white/5 to-blue-400/5 blur-[100px] rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
   </div>
 );
 
@@ -636,9 +623,7 @@ export const Text = ({
     default: "text-white/60",
     muted: "text-white/40",
     subtle: "text-white/20",
-    primary: "text-blue-300",
-    success: "text-emerald-300",
-    danger: "text-rose-300"
+    primary: "text-blue-300"
   };
 
   return (
@@ -783,7 +768,7 @@ export const ConfirmDialog = ({
   message,
   confirmText = "Confirm",
   cancelText = "Cancel",
-  variant = "danger"
+  variant = "accent"
 }) => (
   <Dialog
     isOpen={isOpen}
@@ -823,7 +808,7 @@ export const Dropdown = ({ trigger, children, align = "left", className = "" }) 
 export const DropdownItem = ({ children, icon: Icon, danger = false, onClick, className = "" }) => (
   <button
     onClick={() => { onClick?.(); }}
-    className={`w-full flex items-center gap-3 px-3 py-2 ${theme.radius.base} text-left text-sm font-bold transition-all ${danger ? 'text-rose-400 hover:bg-rose-500/10' : 'text-white/70 hover:bg-white/5'}`}
+    className={`w-full flex items-center gap-3 px-3 py-2 ${theme.radius.base} text-left text-sm font-bold transition-all ${danger ? 'text-blue-400 hover:bg-blue-500/10' : 'text-white/70 hover:bg-white/5'}`}
   >
     {Icon && <Icon size={16} />}
     {children}
@@ -897,9 +882,9 @@ export const useToast = () => {
 
 export const Toast = ({ title, message, variant = "info", onClose, className = "" }) => {
   const variants = {
-    success: "border-emerald-400/30 shadow-[0_8px_24px_rgba(16,185,129,0.2)]",
-    error: "border-rose-400/30 shadow-[0_8px_24px_rgba(244,63,94,0.2)]",
-    warning: "border-amber-400/30 shadow-[0_8px_24px_rgba(245,158,11,0.2)]",
+    success: "border-blue-400/30 shadow-[0_8px_24px_rgba(59,130,246,0.2)]",
+    error: "border-white/30 shadow-[0_8px_24px_rgba(255,255,255,0.2)]",
+    warning: "border-white/20 shadow-[0_8px_24px_rgba(255,255,255,0.1)]",
     info: "border-blue-400/30 shadow-[0_8px_24px_rgba(59,130,246,0.2)]"
   };
 
@@ -915,7 +900,7 @@ export const Toast = ({ title, message, variant = "info", onClose, className = "
   return (
     <div className={`${theme.liquidGlass} ${theme.radius.large} border ${variants[variant]} p-4 min-w-[300px] animate-in slide-in-from-right duration-300 ${className}`}>
       <div className="flex items-start gap-3">
-        <Icon size={20} className={variant === 'success' ? 'text-emerald-400' : variant === 'error' ? 'text-rose-400' : variant === 'warning' ? 'text-amber-400' : 'text-blue-400'} />
+        <Icon size={20} className={variant === 'success' ? 'text-blue-400' : variant === 'error' ? 'text-white/70' : variant === 'warning' ? 'text-white/50' : 'text-blue-400'} />
         <div className="flex-1">
           <p className="text-sm font-bold text-white">{title}</p>
           <p className="text-xs text-white/60 mt-1">{message}</p>
@@ -998,7 +983,7 @@ export const PricingCard = ({ title, price, period, features, buttonText, popula
       <ul className="space-y-3 mb-6">
         {features.map((feature, idx) => (
           <li key={idx} className="flex items-center gap-3 text-sm text-white/60">
-            <Check size={16} className="text-emerald-400" />
+            <Check size={16} className="text-blue-400" />
             {feature}
           </li>
         ))}
@@ -1014,7 +999,7 @@ export const TestimonialCard = ({ quote, author, role, className = "" }) => (
   <div className={`${theme.liquidSurface} ${theme.radius.xlarge} p-8 ${className}`}>
     <div className="flex gap-1 mb-4">
       {[...Array(5)].map((_, i) => (
-        <Star key={i} size={16} className="text-amber-400 fill-amber-400" />
+        <Star key={i} size={16} className="text-white fill-white" />
       ))}
     </div>
     <p className="text-sm text-white/70 mb-6 leading-relaxed">"{quote}"</p>
@@ -1152,11 +1137,7 @@ export const FormGroup = ({ label, children, className = "" }) => (
 export const ProgressBar = ({ value, variant = "blue", size = "md", showLabel = false, className = "" }) => {
   const variants = {
     blue: "from-blue-500 to-blue-600 shadow-[0_2px_12px_rgba(59,130,246,0.4)]",
-    emerald: "from-emerald-500 to-emerald-600 shadow-[0_2px_12px_rgba(16,185,129,0.4)]",
-    rose: "from-rose-500 to-rose-600 shadow-[0_2px_12px_rgba(244,63,94,0.4)]",
-    amber: "from-amber-500 to-amber-600 shadow-[0_2px_12px_rgba(245,158,11,0.4)]",
-    purple: "from-purple-500 to-purple-600 shadow-[0_2px_12px_rgba(168,85,247,0.4)]",
-    gradient: "from-blue-500 via-purple-500 to-pink-500 shadow-[0_2px_12px_rgba(59,130,246,0.4)]"
+    gradient: "from-blue-500 to-blue-400 shadow-[0_2px_12px_rgba(59,130,246,0.4)]"
   };
 
   const sizes = {
@@ -1190,11 +1171,7 @@ export const CircularProgress = ({ value, variant = "blue", size = 64, className
   const offset = circumference - (value / 100) * circumference;
 
   const variantColors = {
-    blue: "text-blue-500",
-    emerald: "text-emerald-500",
-    rose: "text-rose-500",
-    amber: "text-amber-500",
-    purple: "text-purple-500"
+    blue: "text-blue-500"
   };
 
   return (
@@ -1220,7 +1197,7 @@ export const CircularProgress = ({ value, variant = "blue", size = 64, className
           r={radius}
           cx={size / 2}
           cy={size / 2}
-          style={{ filter: `drop-shadow(0 2px 8px ${variant === 'blue' ? 'rgba(59,130,246,0.4)' : variant === 'emerald' ? 'rgba(16,185,129,0.4)' : variant === 'rose' ? 'rgba(244,63,94,0.4)' : variant === 'amber' ? 'rgba(245,158,11,0.4)' : 'rgba(168,85,247,0.4)'})` }}
+          style={{ filter: 'drop-shadow(0 2px 8px rgba(59,130,246,0.4))' }}
         />
       </svg>
       <span className="absolute text-[9px] font-bold text-white/70">{value}%</span>

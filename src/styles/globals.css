@@ -1,0 +1,128 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@theme {
+  /* Glass surface colors */
+  --color-glass-bg: rgba(255, 255, 255, 0.05);
+  --color-glass-border: rgba(255, 255, 255, 0.1);
+  --color-glass-highlight: rgba(255, 255, 255, 0.15);
+
+  /* Neuromorphism surface colors */
+  --color-neuro-bg: #0a0a0b;
+  --color-neuro-shadow-dark: rgba(0, 0, 0, 0.4);
+  --color-neuro-shadow-light: rgba(255, 255, 255, 0.03);
+  --color-neuro-border: rgba(255, 255, 255, 0.05);
+
+  /* Liquid glass surface */
+  --color-liquid-bg: rgba(255, 255, 255, 0.08);
+  --color-liquid-highlight: rgba(255, 255, 255, 0.12);
+  --color-liquid-shadow: rgba(0, 0, 0, 0.3);
+
+  /* Accent colors */
+  --color-accent: #3b82f6;
+  --color-accent-light: #60a5fa;
+  --color-accent-glow: rgba(59, 130, 246, 0.5);
+
+  /* Base surfaces */
+  --color-surface-primary: #0a0a0b;
+  --color-surface-secondary: #0f0f11;
+  --color-surface-elevated: #141416;
+
+  /* Radius tokens */
+  --radius-glass: 1.5rem;
+  --radius-lg: 2rem;
+  --radius-xl: 2.5rem;
+
+  /* Shadows */
+  --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  --shadow-glass-sm: 0 4px 16px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  --shadow-neuro: 8px 8px 16px rgba(0, 0, 0, 0.4), -8px -8px 16px rgba(255, 255, 255, 0.03);
+  --shadow-neuro-sm: 4px 4px 8px rgba(0, 0, 0, 0.4), -4px -4px 8px rgba(255, 255, 255, 0.03);
+  --shadow-liquid: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1), inset 0 0 20px rgba(255, 255, 255, 0.02);
+  --shadow-glow: 0 0 20px rgba(59, 130, 246, 0.5);
+
+  /* Blur tokens */
+  --blur-glass: 24px;
+  --blur-liquid: 32px;
+
+  /* Animation custom properties */
+  --anim-duration-fast: 300ms;
+  --anim-duration-normal: 500ms;
+  --anim-duration-slow: 700ms;
+  --anim-ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --anim-ease-liquid: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --anim-ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@variant dark (&:is(.dark *));
+
+@layer base {
+  :root {
+    --glass-bg: 0 0% 100%;
+    --glass-highlight: 0 0% 100%;
+    --neuro-bg: 0 0% 4%;
+    --accent: 217 91% 60%;
+    --surface-primary: 0 0% 4%;
+    --surface-secondary: 0 0% 6%;
+    --surface-elevated: 0 0% 8%;
+  }
+
+  .dark {
+    --glass-bg: 0 0% 100%;
+    --neuro-bg: 0 0% 4%;
+  }
+
+  body {
+    @apply bg-surface-primary text-white antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+@layer utilities {
+  .spring-press {
+    transition: transform 150ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .spring-press:active {
+    transform: scale(0.97);
+  }
+
+  .glass-surface {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .liquid-glass-surface {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: blur(32px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  }
+
+  .neuro-surface {
+    background: #0a0a0b;
+    box-shadow: 8px 8px 16px rgba(0, 0, 0, 0.4), -8px -8px 16px rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .liquid-surface {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02), transparent);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  .shimmer {
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s ease-in-out infinite;
+  }
+
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+}

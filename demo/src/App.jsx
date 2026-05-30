@@ -222,20 +222,20 @@ function DemoApp() {
                 <div className="flex flex-wrap gap-4">
                   <Badge>Default</Badge>
                   <Badge variant="blue">New</Badge>
-                  <Badge variant="emerald">Active</Badge>
-                  <Badge variant="rose">Error</Badge>
-                  <Badge variant="amber">Warning</Badge>
-                  <Badge variant="purple">Pro</Badge>
+                  <Badge>Active</Badge>
+                  <Badge>Error</Badge>
+                  <Badge>Warning</Badge>
+                  <Badge>Pro</Badge>
                   <Badge size="sm">Small</Badge>
                   <Badge size="lg">Large</Badge>
                 </div>
                 <Divider className="my-8" />
                 <div className="flex flex-wrap gap-4">
                   <StatusBadge variant="blue">Live</StatusBadge>
-                  <StatusBadge variant="emerald">Online</StatusBadge>
-                  <StatusBadge variant="rose">Offline</StatusBadge>
-                  <StatusBadge variant="amber">Pending</StatusBadge>
-                  <StatusBadge variant="purple">Pro</StatusBadge>
+                  <StatusBadge>Online</StatusBadge>
+                  <StatusBadge>Offline</StatusBadge>
+                  <StatusBadge>Pending</StatusBadge>
+                  <StatusBadge>Pro</StatusBadge>
                 </div>
               </GlassPanel>
             </SlideIn>
@@ -402,17 +402,17 @@ function DemoApp() {
                   <div className="space-y-6">
                     <Text variant="muted" className="mb-4">Linear Progress</Text>
                     <ProgressBar value={75} showLabel />
-                    <ProgressBar value={50} variant="emerald" />
-                    <ProgressBar value={25} variant="rose" />
+                    <ProgressBar value={50} />
+                    <ProgressBar value={25} />
                     <ProgressBar value={90} variant="gradient" />
-                    <ProgressBar value={60} variant="purple" size="sm" />
-                    <ProgressBar value={80} variant="amber" size="lg" />
+                    <ProgressBar value={60} size="sm" />
+                    <ProgressBar value={80} size="lg" />
                   </div>
                   <div className="flex flex-wrap gap-8 items-center justify-center">
                     <CircularProgress value={75} variant="blue" />
-                    <CircularProgress value={50} variant="emerald" />
-                    <CircularProgress value={25} variant="rose" />
-                    <CircularProgress value={90} variant="purple" size={80} />
+                    <CircularProgress value={50} />
+                    <CircularProgress value={25} />
+                    <CircularProgress value={90} size={80} />
                   </div>
                 </div>
               </GlassPanel>
@@ -455,9 +455,9 @@ function DemoApp() {
               <GlassPanel>
                 <Heading level={3} className="mb-8">Alerts & Notifications</Heading>
                 <div className="space-y-4">
-                  <AlertItem title="Core-01 Overload" time="14:20" color="rose" />
+                  <AlertItem title="Core-01 Overload" time="14:20" />
                   <AlertItem title="Auth Service Patch" time="13:55" color="blue" />
-                  <AlertItem title="Snapshot Complete" time="12:10" color="emerald" />
+                  <AlertItem title="Snapshot Complete" time="12:10" />
                   <AlertItem title="New Node: EU-W" time="11:45" color="blue" />
                 </div>
               </GlassPanel>
